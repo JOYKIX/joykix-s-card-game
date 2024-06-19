@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadSavedCards();
     loadDecks();
+    loadDeckOptions();
 });
 
 function navigateTo(page) {
@@ -15,14 +16,14 @@ function loadSavedCards() {
     savedCards.forEach(card => {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
-        cardElement.draggable = true;
         cardElement.dataset.cardId = card.id;
+        cardElement.dataset.rank = card.rank;
+        cardElement.dataset.level = card.level;
         cardElement.innerHTML = `
             <img src="${card.image}" alt="${card.name}">
+            <button onclick="addToSelectedDeck('${card.id}')">Ajouter au deck</button>
             <button onclick="deleteCard('${card.id}')">Supprimer</button>
         `;
-        cardElement.addEventListener('dragstart', handleDragStart);
-        cardElement.addEventListener('dragend', handleDragEnd);
         savedCardsContainer.appendChild(cardElement);
     });
 }
@@ -40,53 +41,42 @@ function loadDecks() {
             <p><strong>Cartes:</strong> ${deck.cards.length}</p>
             <button onclick="toggleDeckDetails('${deck.id}')">Voir</button>
             <button onclick="deleteDeck('${deck.id}')">Supprimer</button>
-            <div id="deck-${deck.id}" class="deck-details drop-zone" data-deck-id="${deck.id}"></div>
+            <button onclick="renameDeckPrompt('${deck.id}')">Renommer</button>
+            <div id="deck-${deck.id}" class="deck-details"></div>
         `;
         decksContainer.appendChild(deckElement);
     });
+}
 
-    document.querySelectorAll('.drop-zone').forEach(zone => {
-        zone.addEventListener('dragover', handleDragOver);
-        zone.addEventListener('dragleave', handleDragLeave);
-        zone.addEventListener('drop', handleDrop);
+function loadDeckOptions() {
+    const deckSelect = document.getElementById('deckSelect');
+    const decks = JSON.parse(localStorage.getItem('decks')) || [];
+
+    deckSelect.innerHTML = '';
+    decks.forEach(deck => {
+        const option = document.createElement('option');
+        option.value = deck.id;
+        option.textContent = deck.name;
+        deckSelect.appendChild(option);
     });
 }
 
-function handleDragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.dataset.cardId);
-    event.target.classList.add('dragging');
-}
+function addToSelectedDeck(cardId) {
+    const deckSelect = document.getElementById('deckSelect');
+    const selectedDeckId = deckSelect.value;
 
-function handleDragEnd(event) {
-    event.target.classList.remove('dragging');
-}
+    if (!selectedDeckId) {
+        alert('Veuillez sélectionner un deck à modifier.');
+        return;
+    }
 
-function handleDragOver(event) {
-    event.preventDefault();
-    event.currentTarget.classList.add('dragging');
-}
-
-function handleDragLeave(event) {
-    event.currentTarget.classList.remove('dragging');
-}
-
-function handleDrop(event) {
-    event.preventDefault();
-    const cardId = event.dataTransfer.getData('text/plain');
-    const deckId = event.currentTarget.dataset.deckId;
-    event.currentTarget.classList.remove('dragging');
-
-    addToDeck(deckId, cardId);
-}
-
-function addToDeck(deckId, cardId) {
     const decks = JSON.parse(localStorage.getItem('decks')) || [];
-    const deck = decks.find(d => d.id === deckId);
+    const deck = decks.find(d => d.id === selectedDeckId);
 
     if (deck && deck.cards.length < 40) {
         deck.cards.push(cardId);
         localStorage.setItem('decks', JSON.stringify(decks));
-        loadDeckDetails(deckId);
+        loadDeckDetails(selectedDeckId);
         loadDecks();
         alert('Carte ajoutée au deck !');
     } else if (deck) {
@@ -131,6 +121,7 @@ function createDeck() {
         decks.push(newDeck);
         localStorage.setItem('decks', JSON.stringify(decks));
         loadDecks();
+        loadDeckOptions();
         document.getElementById('newDeckName').value = '';
     }
 }
@@ -142,6 +133,25 @@ function toggleDeckDetails(deckId) {
     } else {
         deckDetails.classList.add('active');
         loadDeckDetails(deckId);
+    }
+}
+
+function renameDeckPrompt(deckId) {
+    const newDeckName = prompt('Entrez le nouveau nom du deck:');
+    if (newDeckName) {
+        renameDeck(deckId, newDeckName);
+    }
+}
+
+function renameDeck(deckId, newDeckName) {
+    const decks = JSON.parse(localStorage.getItem('decks')) || [];
+    const deck = decks.find(d => d.id === deckId);
+
+    if (deck) {
+        deck.name = newDeckName;
+        localStorage.setItem('decks', JSON.stringify(decks));
+        loadDecks();
+        loadDeckOptions();
     }
 }
 
@@ -177,4 +187,34 @@ function deleteDeck(deckId) {
     decks = decks.filter(deck => deck.id !== deckId);
     localStorage.setItem('decks', JSON.stringify(decks));
     loadDecks();
+    loadDeckOptions();
+}
+
+function filterCards() {
+    const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+    const rankFilter = document.getElementById('rankFilter').value;
+    const levelFilter = document.getElementById('levelFilter').value;
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        const cardName = card.querySelector('img').alt.toLowerCase();
+        const cardRank = card.dataset.rank;
+        const cardLevel = parseInt(card.dataset.level, 10);
+
+        const matchesSearch = cardName.includes(searchTerm);
+        const matchesRank = !rankFilter || cardRank === rankFilter;
+        const matchesLevel = matchesLevelRange(cardLevel, levelFilter);
+
+        if (matchesSearch && matchesRank && matchesLevel) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function matchesLevelRange(cardLevel, levelRange) {
+    if (!levelRange) return true;
+    const [min, max] = levelRange.split('-').map(Number);
+    return cardLevel >= min && cardLevel <= max;
 }

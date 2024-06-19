@@ -16,6 +16,37 @@
         </div>
         <div class="gallery">
             <h2>Cartes Sauvegardées</h2>
+            <input type="text" id="searchBar" placeholder="Rechercher des cartes..." oninput="filterCards()">
+            <div class="filters">
+                <label for="rankFilter">Filtrer par rang:</label>
+                <select id="rankFilter" onchange="filterCards()">
+                    <option value="">Tous</option>
+                    <option value="D">D</option>
+                    <option value="C">C</option>
+                    <option value="B">B</option>
+                    <option value="A">A</option>
+                    <option value="S">S</option>
+                    <option value="Ultimate">Ultimate</option>
+                </select>
+                <label for="levelFilter">Filtrer par tranche de niveau:</label>
+                <select id="levelFilter" onchange="filterCards()">
+                    <option value="">Tous</option>
+                    <option value="1-10">1-10</option>
+                    <option value="11-20">11-20</option>
+                    <option value="21-30">21-30</option>
+                    <option value="31-40">31-40</option>
+                    <option value="41-50">41-50</option>
+                    <option value="51-60">51-60</option>
+                    <option value="61-70">61-70</option>
+                    <option value="71-80">71-80</option>
+                    <option value="81-90">81-90</option>
+                    <option value="91-100">91-100</option>
+                </select>
+            </div>
+            <label for="deckSelect">Modifier le deck:</label>
+            <select id="deckSelect">
+                <!-- Options des decks seront chargées dynamiquement -->
+            </select>
             <div id="saved-cards" class="card-list">
                 <!-- Cartes sauvegardées -->
             </div>
