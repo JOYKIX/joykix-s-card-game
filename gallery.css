@@ -34,6 +34,7 @@ h1 {
     letter-spacing: 3px;
     font-family: 'Uncial Antiqua', cursive;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 h2 {
@@ -44,6 +45,7 @@ h2 {
     letter-spacing: 2px;
     font-family: 'Uncial Antiqua', cursive;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .navigation-buttons {
@@ -61,15 +63,50 @@ h2 {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     font-size: 1.1em;
     font-family: 'Cinzel', serif;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.navigation-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s;
+    border-radius: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+}
+
+.navigation-buttons button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.navigation-buttons button span {
+    position: relative;
+    z-index: 1;
 }
 
 .navigation-buttons button:hover {
     background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
     transform: scale(1.05);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-buttons button:active {
+    background: linear-gradient(135deg, #cc9a00 0%, #e6b800 100%);
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .gallery, .decks {
@@ -100,6 +137,7 @@ h2 {
     border-radius: 5px;
     outline: none;
     transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .filters select:focus, .filters input[type="range"]:focus {
@@ -121,6 +159,7 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s, transform 0.3s;
     width: 150px; /* Taille réduite pour les cartes */
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .card img {
@@ -153,11 +192,45 @@ button {
     font-size: 1.1em;
     font-family: 'Cinzel', serif;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s;
+    border-radius: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+}
+
+button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+button span {
+    position: relative;
+    z-index: 1;
 }
 
 button:hover {
     background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
     transform: scale(1.05);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    background: linear-gradient(135deg, #cc9a00 0%, #e6b800 100%);
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card button, .deck button {
@@ -210,4 +283,16 @@ input[type="text"] {
     font-size: 1em;
     font-family: 'Cinzel', serif;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

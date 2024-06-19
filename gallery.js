@@ -1,3 +1,8 @@
+const CARDS_PER_PAGE = 12;
+const DECKS_PER_PAGE = 6;
+let currentCardPage = 1;
+let currentDeckPage = 1;
+
 document.addEventListener('DOMContentLoaded', () => {
     loadSavedCards();
     loadDecks();
@@ -11,9 +16,14 @@ function navigateTo(page) {
 function loadSavedCards() {
     const savedCardsContainer = document.getElementById('saved-cards');
     const savedCards = JSON.parse(localStorage.getItem('savedCards')) || [];
+    const filteredCards = filterCardsArray(savedCards);
+
+    const start = (currentCardPage - 1) * CARDS_PER_PAGE;
+    const end = start + CARDS_PER_PAGE;
+    const paginatedCards = filteredCards.slice(start, end);
 
     savedCardsContainer.innerHTML = '';
-    savedCards.forEach(card => {
+    paginatedCards.forEach(card => {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
         cardElement.dataset.cardId = card.id;
@@ -26,14 +36,38 @@ function loadSavedCards() {
         `;
         savedCardsContainer.appendChild(cardElement);
     });
+
+    setupCardPagination(filteredCards.length);
+}
+
+function setupCardPagination(totalCards) {
+    const paginationContainer = document.getElementById('card-pagination');
+    const totalPages = Math.ceil(totalCards / CARDS_PER_PAGE);
+
+    paginationContainer.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.className = i === currentCardPage ? 'active' : '';
+        button.addEventListener('click', () => {
+            currentCardPage = i;
+            loadSavedCards();
+        });
+        paginationContainer.appendChild(button);
+    }
 }
 
 function loadDecks() {
     const decksContainer = document.getElementById('decks');
     const decks = JSON.parse(localStorage.getItem('decks')) || [];
 
+    const start = (currentDeckPage - 1) * DECKS_PER_PAGE;
+    const end = start + DECKS_PER_PAGE;
+    const paginatedDecks = decks.slice(start, end);
+
     decksContainer.innerHTML = '';
-    decks.forEach(deck => {
+    paginatedDecks.forEach(deck => {
         const deckElement = document.createElement('div');
         deckElement.className = 'deck';
         deckElement.innerHTML = `
@@ -46,6 +80,26 @@ function loadDecks() {
         `;
         decksContainer.appendChild(deckElement);
     });
+
+    setupDeckPagination(decks.length);
+}
+
+function setupDeckPagination(totalDecks) {
+    const paginationContainer = document.getElementById('deck-pagination');
+    const totalPages = Math.ceil(totalDecks / DECKS_PER_PAGE);
+
+    paginationContainer.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.className = i === currentDeckPage ? 'active' : '';
+        button.addEventListener('click', () => {
+            currentDeckPage = i;
+            loadDecks();
+        });
+        paginationContainer.appendChild(button);
+    }
 }
 
 function loadDeckOptions() {
@@ -191,25 +245,25 @@ function deleteDeck(deckId) {
 }
 
 function filterCards() {
+    currentCardPage = 1; // Reset to the first page when filtering
+    loadSavedCards();
+}
+
+function filterCardsArray(cards) {
     const searchTerm = document.getElementById('searchBar').value.toLowerCase();
     const rankFilter = document.getElementById('rankFilter').value;
     const levelFilter = document.getElementById('levelFilter').value;
-    const cards = document.querySelectorAll('.card');
 
-    cards.forEach(card => {
-        const cardName = card.querySelector('img').alt.toLowerCase();
-        const cardRank = card.dataset.rank;
-        const cardLevel = parseInt(card.dataset.level, 10);
+    return cards.filter(card => {
+        const cardName = card.name.toLowerCase();
+        const cardRank = card.rank;
+        const cardLevel = parseInt(card.level, 10);
 
         const matchesSearch = cardName.includes(searchTerm);
         const matchesRank = !rankFilter || cardRank === rankFilter;
         const matchesLevel = matchesLevelRange(cardLevel, levelFilter);
 
-        if (matchesSearch && matchesRank && matchesLevel) {
-            card.style.display = '';
-        } else {
-            card.style.display = 'none';
-        }
+        return matchesSearch && matchesRank && matchesLevel;
     });
 }
 
