@@ -1,0 +1,168 @@
+/* Styles communs */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;700&display=swap');
+
+body {
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(135deg, #2e1a47 40%, #1b0d32 100%);
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    background: rgba(59, 34, 69, 0.9);
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    border: 2px solid #ffcc00;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #ffcc00;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #ffcc00;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.navigation-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.1em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.navigation-buttons button:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+}
+
+.gallery, .decks {
+    margin: 20px 0;
+}
+
+.card-list, .deck-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card, .deck {
+    background: rgba(75, 43, 86, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+    width: 150px; /* Taille réduite pour les cartes */
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card:hover, .deck:hover {
+    background-color: #593a69;
+    transform: scale(1.05);
+}
+
+.card p, .deck p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #ffcc00;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.1em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+}
+
+.deck-details {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.deck-details .card {
+    width: 100px; /* Taille réduite pour les cartes dans les decks */
+    margin: 5px;
+}
+
+.deck-details.active {
+    display: flex;
+}
+
+.drop-zone {
+    border: 2px dashed #ffcc00;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffcc00;
+    transition: background-color 0.3s;
+}
+
+.drop-zone.dragging {
+    background-color: rgba(255, 204, 0, 0.2);
+}
+
+.dragging {
+    opacity: 0.5;
+}

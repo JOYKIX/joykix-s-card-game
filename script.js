@@ -195,8 +195,8 @@ function handleMouseMove(event) {
     const centerY = cardRect.top + cardHeight / 2;
     const mouseX = event.clientX;
     const mouseY = event.clientY;
-    const rotateX = (centerY - mouseY) / cardHeight * 30; // Plus prononcé
-    const rotateY = (mouseX - centerX) / cardWidth * 30; // Plus prononcé et inversé
+    const rotateX = (mouseY - centerY) / cardHeight * 30; // Inversé pour incliner correctement
+    const rotateY = (mouseX - centerX) / cardWidth * 30;
 
     card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 }
@@ -205,6 +205,44 @@ function handleMouseLeave() {
     card.style.transform = 'rotateX(0deg) rotateY(0deg)';
 }
 
+function saveCard() {
+    html2canvas(document.querySelector("#card")).then(canvas => {
+        const cardData = {
+            id: Date.now().toString(),
+            name: document.getElementById('name').textContent,
+            rank: document.getElementById('rank').textContent,
+            class: document.getElementById('class').textContent.split(": ")[1],
+            race: document.getElementById('race').textContent.split(": ")[1],
+            level: document.getElementById('level').textContent.split(": ")[1],
+            stats: {
+                strength: document.getElementById('strength').textContent.split(": ")[1],
+                dexterity: document.getElementById('dexterity').textContent.split(": ")[1],
+                constitution: document.getElementById('constitution').textContent.split(": ")[1],
+                intelligence: document.getElementById('intelligence').textContent.split(": ")[1],
+                wisdom: document.getElementById('wisdom').textContent.split(": ")[1],
+                charisma: document.getElementById('charisma').textContent.split(": ")[1],
+                luck: document.getElementById('luck').textContent.split(": ")[1],
+                speed: document.getElementById('speed').textContent.split(": ")[1]
+            },
+            abilities: document.getElementById('abilities').textContent.split(": ")[1],
+            weapon: document.getElementById('weapon').textContent.split(": ")[1],
+            armor: document.getElementById('armor').textContent.split(": ")[1],
+            background: document.getElementById('background').textContent.split(": ")[1],
+            description: document.getElementById('description').textContent.split(": ")[1],
+            customRankMention: document.getElementById('customRankMention').textContent,
+            image: canvas.toDataURL('image/png')
+        };
+
+        let savedCards = JSON.parse(localStorage.getItem('savedCards')) || [];
+        savedCards.push(cardData);
+        localStorage.setItem('savedCards', JSON.stringify(savedCards));
+        alert('Carte sauvegardée dans la galerie !');
+    });
+}
+
+function navigateTo(page) {
+    window.location.href = page;
+}
+
+
 updateCounts();
-
-

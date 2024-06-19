@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joykix's Card Game - Galerie</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Galerie de Cartes</h1>
+        <div class="navigation-buttons">
+            <button onclick="navigateTo('index.html')">🏠 Menu</button>
+            <button onclick="navigateTo('generator.html')">🃏 Générateur</button>
+            <button onclick="navigateTo('battle.html')">⚔️ Combat</button>
+        </div>
+        <div class="gallery">
+            <h2>Cartes Sauvegardées</h2>
+            <div id="saved-cards" class="card-list">
+                <!-- Cartes sauvegardées -->
+            </div>
+        </div>
+        <div class="decks">
+            <h2>Decks</h2>
+            <div id="decks" class="deck-list">
+                <!-- Decks de cartes -->
+            </div>
+            <input type="text" id="newDeckName" placeholder="Nom du nouveau deck">
+            <button onclick="createDeck()">Créer un nouveau deck</button>
+        </div>
+    </div>
+    <script src="gallery.js"></script>
+    <script src="menu.js"></script>
+</body>
+</html>
