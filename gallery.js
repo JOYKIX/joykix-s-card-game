@@ -106,7 +106,7 @@ function loadDeckOptions() {
     const deckSelect = document.getElementById('deckSelect');
     const decks = JSON.parse(localStorage.getItem('decks')) || [];
 
-    deckSelect.innerHTML = '';
+    deckSelect.innerHTML = '<option value="">Sélectionner un deck</option>';
     decks.forEach(deck => {
         const option = document.createElement('option');
         option.value = deck.id;
@@ -152,7 +152,7 @@ function loadDeckDetails(deckId) {
             const card = savedCards.find(c => c.id === cardId);
             if (card) {
                 const cardElement = document.createElement('div');
-                cardElement.className = 'card';
+                cardElement.className = 'deck-card';
                 cardElement.innerHTML = `
                     <img src="${card.image}" alt="${card.name}">
                     <button onclick="removeFromDeck('${deck.id}', '${card.id}')">Retirer</button>

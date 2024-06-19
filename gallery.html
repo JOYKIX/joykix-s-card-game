@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joykix's Card Game - Galerie</title>
+    <title>Galerie de Cartes</title>
     <link rel="stylesheet" href="gallery.css">
+    <script defer src="gallery.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Galerie de Cartes</h1>
         <div class="navigation-buttons">
             <button onclick="navigateTo('index.html')">🏠 Menu</button>
-            <button onclick="navigateTo('generator.html')">🃏 Générateur</button>
+            <button onclick="navigateTo('generator.html')">🛠 Générateur</button>
             <button onclick="navigateTo('battle.html')">⚔️ Combat</button>
         </div>
-        <div class="gallery">
-            <h2>Cartes Sauvegardées</h2>
-            <input type="text" id="searchBar" placeholder="Rechercher des cartes..." oninput="filterCards()">
-            <div class="filters">
-                <label for="rankFilter">Filtrer par rang:</label>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="searchBar">Recherche :</label>
+                <input type="text" id="searchBar" oninput="filterCards()" placeholder="Rechercher une carte...">
+            </div>
+            <div class="filter-group">
+                <label for="rankFilter">Rang :</label>
                 <select id="rankFilter" onchange="filterCards()">
                     <option value="">Tous</option>
                     <option value="D">D</option>
@@ -28,7 +31,9 @@
                     <option value="S">S</option>
                     <option value="Ultimate">Ultimate</option>
                 </select>
-                <label for="levelFilter">Filtrer par tranche de niveau:</label>
+            </div>
+            <div class="filter-group">
+                <label for="levelFilter">Niveau :</label>
                 <select id="levelFilter" onchange="filterCards()">
                     <option value="">Tous</option>
                     <option value="1-10">1-10</option>
@@ -43,30 +48,22 @@
                     <option value="91-100">91-100</option>
                 </select>
             </div>
-            <label for="deckSelect">Modifier le deck:</label>
-            <select id="deckSelect">
-                <!-- Options des decks seront chargées dynamiquement -->
-            </select>
-            <div id="saved-cards" class="card-list">
-                <!-- Cartes sauvegardées -->
-            </div>
-            <div id="card-pagination" class="pagination">
-                <!-- Boutons de pagination pour les cartes -->
+            <div class="filter-group">
+                <label for="deckSelect">Modifier le deck :</label>
+                <select id="deckSelect">
+                    <option value="">Sélectionner un deck</option>
+                </select>
             </div>
         </div>
-        <div class="decks">
-            <h2>Decks</h2>
-            <div id="decks" class="deck-list">
-                <!-- Decks de cartes -->
-            </div>
-            <div id="deck-pagination" class="pagination">
-                <!-- Boutons de pagination pour les decks -->
-            </div>
+        <div class="card-list" id="saved-cards"></div>
+        <div id="card-pagination" class="pagination"></div>
+        <h2>Decks</h2>
+        <div class="new-deck">
             <input type="text" id="newDeckName" placeholder="Nom du nouveau deck">
-            <button onclick="createDeck()">Créer un nouveau deck</button>
+            <button onclick="createDeck()">Créer un Deck</button>
         </div>
+        <div class="deck-list" id="decks"></div>
+        <div id="deck-pagination" class="pagination"></div>
     </div>
-    <script src="gallery.js"></script>
-    <script src="menu.js"></script>
 </body>
 </html>

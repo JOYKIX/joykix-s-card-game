@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combat de Cartes</title>
+    <link rel="stylesheet" href="battle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Combat de Cartes</h1>
+        <div class="navigation-buttons">
+            <button onclick="navigateTo('index.html')">🏠 Menu</button>
+            <button onclick="navigateTo('generator.html')">🛠 Générateur</button>
+            <button onclick="navigateTo('gallery.html')">🖼 Galerie</button>
+        </div>
+        <div class="deck-selection">
+            <div class="deck-selection-group">
+                <h2>Sélectionnez le Deck 1 (Joueur)</h2>
+                <select id="deck1Select"></select>
+            </div>
+            <div class="deck-selection-group">
+                <h2>Sélectionnez le Deck 2 (Ordinateur)</h2>
+                <select id="deck2Select"></select>
+            </div>
+        </div>
+        <button id="startBattle">Lancer le Combat</button>
+        <div id="battleArena" class="battle-arena"></div>
+        <div id="battleLog" class="battle-log"></div>
+    </div>
+    <script src="battle.js"></script>
+</body>
+</html>

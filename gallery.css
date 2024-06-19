@@ -1,6 +1,11 @@
 /* Styles communs */
 @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;700&display=swap');
 
+:root {
+    --gallery-width: auto;
+    --gallery-height: 90vh;
+}
+
 body {
     font-family: 'Cinzel', serif;
     background: linear-gradient(135deg, #2e1a47 40%, #1b0d32 100%);
@@ -18,12 +23,40 @@ body {
 .container {
     text-align: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--gallery-width);
+    max-height: var(--gallery-height);
     background: rgba(59, 34, 69, 0.9);
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
     border: 2px solid #ffcc00;
+    overflow-y: auto;
+}
+
+.container::-webkit-scrollbar {
+    width: 16px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: #1e0d32;
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    border-radius: 10px;
+    border: 3px solid #1e0d32;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    border-color: #1e0d32;
+}
+
+.container::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(135deg, #cc9a00 0%, #e6b800 100%);
+    border-color: #1e0d32;
 }
 
 h1 {
@@ -71,7 +104,6 @@ h2 {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    animation: fadeIn 1.5s ease-in-out;
 }
 
 .navigation-buttons button::before {
@@ -109,17 +141,15 @@ h2 {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.gallery, .decks {
-    margin: 20px 0;
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 
-.filters {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
+.filter-group {
+    margin: 10px;
 }
 
 .filters label {
@@ -128,8 +158,8 @@ h2 {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-.filters select, .filters input[type="range"] {
-    padding: 5px;
+.filters select, .filters input[type="text"], #deckSelect {
+    padding: 10px;
     font-size: 1em;
     background: #1e0d32;
     color: #f0f0f0;
@@ -138,9 +168,11 @@ h2 {
     outline: none;
     transition: background-color 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
-.filters select:focus, .filters input[type="range"]:focus {
+.filters select:focus, .filters input[type="text"]:focus, #deckSelect:focus {
     background: #2e1a47;
 }
 
@@ -153,12 +185,12 @@ h2 {
 
 .card, .deck {
     background: rgba(75, 43, 86, 0.9);
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 15px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s, transform 0.3s;
-    width: 150px; /* Taille réduite pour les cartes */
+    width: 200px; /* Taille ajustée pour les cartes */
     animation: fadeIn 1.5s ease-in-out;
 }
 
@@ -173,70 +205,15 @@ h2 {
     transform: scale(1.05);
 }
 
-.card p, .deck p {
-    margin: 5px 0;
-    font-size: 1em;
-    color: #ffcc00;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-}
-
-button {
+.card button, .deck button {
+    padding: 10px 15px;
     margin-top: 10px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
-    color: white;
+    font-size: 1em;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 1.1em;
-    font-family: 'Cinzel', serif;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.15);
-    transition: all 0.3s;
-    border-radius: 50%;
-    z-index: 0;
-    transform: translate(-50%, -50%) scale(0.1);
-}
-
-button:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-button span {
-    position: relative;
-    z-index: 1;
-}
-
-button:hover {
-    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
-    transform: scale(1.05);
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-}
-
-button:active {
-    background: linear-gradient(135deg, #cc9a00 0%, #e6b800 100%);
-    transform: scale(0.98);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.card button, .deck button {
-    padding: 5px 10px;
-    margin-top: 10px;
-    font-size: 0.9em;
 }
 
 .card button {
@@ -262,37 +239,161 @@ button:active {
     margin-top: 10px;
 }
 
-.deck-details .card {
+.deck-details.active {
+    display: flex;
+}
+
+.deck-card {
+    background: rgba(75, 43, 86, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
     width: 100px; /* Taille réduite pour les cartes dans les decks */
     margin: 5px;
 }
 
-.deck-details.active {
-    display: flex;
+.deck-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.deck-card button {
+    background-color: #ff6f61;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.deck-card button:hover {
+    background-color: #ff4f41;
+}
+
+.deck-card:hover {
+    background-color: #593a69;
+    transform: scale(1.05);
 }
 
 input[type="text"] {
     width: 100%;
     max-width: 300px;
     padding: 10px;
+    margin-bottom: 10px;
     border: 2px solid #ffcc00;
     border-radius: 5px;
     background: #1e0d32;
     color: #f0f0f0;
-    margin-bottom: 20px;
     font-size: 1em;
     font-family: 'Cinzel', serif;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"]::placeholder {
+    color: #f0f0f0;
+}
+
+.new-deck {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.new-deck input[type="text"] {
+    width: 200px;
+}
+
+.new-deck button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-size: 1.1em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.new-deck button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s;
+    border-radius: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+}
+
+.new-deck button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.new-deck button span {
+    position: relative;
+    z-index: 1;
+}
+
+.new-deck button:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.new-deck button:active {
+    background: linear-gradient(135deg, #cc9a00 0%, #e6b800 100%);
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeIn {
-    0% {
+    from {
         opacity: 0;
-        transform: translateY(-20px);
     }
-    100% {
+    to {
         opacity: 1;
-        transform: translateY(0);
     }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: 'Cinzel', serif;
+    font-size: 1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.pagination button.active {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+}
+
+.pagination button:hover:not(.active) {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
 }

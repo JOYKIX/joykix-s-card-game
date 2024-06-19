@@ -1,0 +1,252 @@
+/* Styles communs */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;700&display=swap');
+
+:root {
+    --container-width: 80%;
+    --container-height: auto;
+    --primary-color: #ffcc00;
+    --secondary-color: #1b0d32;
+}
+
+body {
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(135deg, #2e1a47 40%, var(--secondary-color) 100%);
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.container {
+    text-align: center;
+    width: var(--container-width);
+    height: var(--container-height);
+    background: rgba(59, 34, 69, 0.9);
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--primary-color);
+    overflow-y: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.navigation-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-size: 1.1em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.navigation-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s;
+    border-radius: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+}
+
+.navigation-buttons button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.navigation-buttons button span {
+    position: relative;
+    z-index: 1;
+}
+
+.navigation-buttons button:hover {
+    background: linear-gradient(135deg, #e6b800 0%, var(--primary-color) 100%);
+    transform: scale(1.05);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-buttons button:active {
+    background: linear-gradient(135deg, #cc9a00 0%, #e6b800 100%);
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.deck-selection {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.deck-selection-group {
+    text-align: center;
+    width: 40%;
+}
+
+.deck-selection select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    background: #1e0d32;
+    color: #f0f0f0;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    outline: none;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.deck-selection select:focus {
+    background: #2e1a47;
+}
+
+button#startBattle {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.2em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+button#startBattle:hover {
+    background: linear-gradient(135deg, #e6b800 0%, var(--primary-color) 100%);
+    transform: scale(1.05);
+}
+
+button#startBattle:active {
+    background: linear-gradient(135deg, #cc9a00 0%, #e6b800 100%);
+    transform: scale(0.98);
+}
+
+.battle-arena {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(75, 43, 86, 0.9);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.battle-arena .card {
+    width: 150px;
+    transition: transform 0.5s ease-in-out;
+    position: absolute;
+}
+
+.battle-arena .card img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.battle-arena .card.attack {
+    animation: attack 0.5s ease-in-out;
+}
+
+.battle-arena .card.hit {
+    animation: hit 0.5s ease-in-out;
+}
+
+.battle-log {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(75, 43, 86, 0.9);
+    border-radius: 10px;
+    text-align: left;
+    height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.battle-log p {
+    margin: 5px 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes attack {
+    0% {
+        transform: scale(1) translateX(0);
+    }
+    50% {
+        transform: scale(1.1) translateX(-20px);
+    }
+    100% {
+        transform: scale(1) translateX(0);
+    }
+}
+
+@keyframes hit {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
