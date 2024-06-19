@@ -1,0 +1,22 @@
+const armors = [
+    "Armure de plaques", "Cuirasse", "Robe magique", "Armure de cuir", "Cotte de mailles", "Bouclier", "Casque", "Gants en fer", "Bottes enchantées", "Cape",
+    "Armure de tissu", "Armure de peau", "Épaulières", "Brassards", "Garde-jambes", "Garde-bras", "Rondache", "Targe", "Bouclier de tour", "Bouclier en écailles",
+    "Armure de mithril", "Armure de draconite", "Armure de titane", "Armure d'obsidienne", "Armure de jade", "Armure d'or", "Armure d'argent", "Armure de diamant", "Armure de saphir", "Armure d'émeraude",
+    "Armure de cristal", "Armure de rubis", "Armure d'opale", "Armure d'améthyste", "Armure de perles", "Armure de corail", "Armure de corne", "Armure de plumes", "Armure de bois", "Armure de pierre",
+    "Armure de glace", "Armure de feu", "Armure de l'ombre", "Armure de lumière", "Armure de la tempête", "Armure de la terre", "Armure de l'air", "Armure de l'eau", "Armure de l'esprit", "Armure de la nature",
+    "Casque de mithril", "Casque de draconite", "Casque de titane", "Casque d'obsidienne", "Casque de jade", "Casque d'or", "Casque d'argent", "Casque de diamant", "Casque de saphir", "Casque d'émeraude",
+    "Casque de cristal", "Casque de rubis", "Casque d'opale", "Casque d'améthyste", "Casque de perles", "Casque de corail", "Casque de corne", "Casque de plumes", "Casque de bois", "Casque de pierre",
+    "Casque de glace", "Casque de feu", "Casque de l'ombre", "Casque de lumière", "Casque de la tempête", "Casque de la terre", "Casque de l'air", "Casque de l'eau", "Casque de l'esprit", "Casque de la nature",
+    "Bouclier de mithril", "Bouclier de draconite", "Bouclier de titane", "Bouclier d'obsidienne", "Bouclier de jade", "Bouclier d'or", "Bouclier d'argent", "Bouclier de diamant", "Bouclier de saphir", "Bouclier d'émeraude",
+    "Bouclier de cristal", "Bouclier de rubis", "Bouclier d'opale", "Bouclier d'améthyste", "Bouclier de perles", "Bouclier de corail", "Bouclier de corne", "Bouclier de plumes", "Bouclier de bois", "Bouclier de pierre",
+    "Bouclier de glace", "Bouclier de feu", "Bouclier de l'ombre", "Bouclier de lumière", "Bouclier de la tempête", "Bouclier de la terre", "Bouclier de l'air", "Bouclier de l'eau", "Bouclier de l'esprit", "Bouclier de la nature",
+    "Gants de mithril", "Gants de draconite", "Gants de titane", "Gants d'obsidienne", "Gants de jade", "Gants d'or", "Gants d'argent", "Gants de diamant", "Gants de saphir", "Gants d'émeraude",
+    "Gants de cristal", "Gants de rubis", "Gants d'opale", "Gants d'améthyste", "Gants de perles", "Gants de corail", "Gants de corne", "Gants de plumes", "Gants de bois", "Gants de pierre",
+    "Gants de glace", "Gants de feu", "Gants de l'ombre", "Gants de lumière", "Gants de la tempête", "Gants de la terre", "Gants de l'air", "Gants de l'eau", "Gants de l'esprit", "Gants de la nature",
+    "Bottes de mithril", "Bottes de draconite", "Bottes de titane", "Bottes d'obsidienne", "Bottes de jade", "Bottes d'or", "Bottes d'argent", "Bottes de diamant", "Bottes de saphir", "Bottes d'émeraude",
+    "Bottes de cristal", "Bottes de rubis", "Bottes d'opale", "Bottes d'améthyste", "Bottes de perles", "Bottes de corail", "Bottes de corne", "Bottes de plumes", "Bottes de bois", "Bottes de pierre",
+    "Bottes de glace", "Bottes de feu", "Bottes de l'ombre", "Bottes de lumière", "Bottes de la tempête", "Bottes de la terre", "Bottes de l'air", "Bottes de l'eau", "Bottes de l'esprit", "Bottes de la nature",
+    "Cape de mithril", "Cape de draconite", "Cape de titane", "Cape d'obsidienne", "Cape de jade", "Cape d'or", "Cape d'argent", "Cape de diamant", "Cape de saphir", "Cape d'émeraude",
+    "Cape de cristal", "Cape de rubis", "Cape d'opale", "Cape d'améthyste", "Cape de perles", "Cape de corail", "Cape de corne", "Cape de plumes", "Cape de bois", "Cape de pierre",
+    "Cape de glace", "Cape de feu", "Cape de l'ombre", "Cape de lumière", "Cape de la tempête", "Cape de la terre", "Cape de l'air", "Cape de l'eau", "Cape de l'esprit", "Cape de la nature"
+];

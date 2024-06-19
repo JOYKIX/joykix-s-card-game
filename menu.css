@@ -1,0 +1,137 @@
+/* Styles communs */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;700&display=swap');
+
+body {
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(135deg, #2e1a47 40%, #1b0d32 100%);
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(59, 34, 69, 0.9);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    border: 2px solid #ffcc00;
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #ffcc00;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #ffcc00;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu button {
+    margin: 10px 0;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-size: 1.2em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.menu button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s;
+    border-radius: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+}
+
+.menu button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.menu button span {
+    position: relative;
+    z-index: 1;
+}
+
+.menu button:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.menu button:active {
+    background: linear-gradient(135deg, #cc9a00 0%, #e6b800 100%);
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-animation::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 204, 0, 0.2), transparent);
+    animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

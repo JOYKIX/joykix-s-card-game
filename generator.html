@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Carte RPG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="noms.js"></script>
+    <script src="classes.js"></script>
+    <script src="races.js"></script>
+    <script src="abilities.js"></script>
+    <script src="weapons.js"></script>
+    <script src="armors.js"></script>
+    <script src="backgrounds.js"></script>
+    <script src="descriptions.js"></script>
+    <script defer src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <button onclick="window.location.href='index.html'">🏠 Menu</button>
+            <button onclick="window.location.href='gallery.html'">🖼️ Galerie</button>
+            <button onclick="window.location.href='battle.html'">⚔️ Combat</button>
+        </div>
+        <h1>🃏 Générateur de Carte RPG 🃏</h1>
+        <div class="content">
+            <div class="left-column">
+                <div class="input-group">
+                    <input type="text" id="inputName" placeholder="Entrez un nom">
+                </div>
+                <div class="input-group">
+                    <label for="rankSelect">Choisir un rang :</label>
+                    <select id="rankSelect">
+                        <option value="">Aléatoire</option>
+                        <option value="D">D</option>
+                        <option value="C">C</option>
+                        <option value="B">B</option>
+                        <option value="A">A</option>
+                        <option value="S">S</option>
+                        <option value="Ultimate">Ultimate</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <button id="generate">🎲 Générer une Carte Aléatoire 🎲</button>
+                </div>
+                <div class="card" id="card">
+                    <div class="card-header">
+                        <div class="name-container">
+                            <span class="label">Nom :</span>
+                            <h2 id="name">???</h2>
+                        </div>
+                        <div class="rank-container">
+                            <span class="label">Rang :</span>
+                            <p id="rank" class="rank">???</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="title">Détails</p>
+                        <p id="class">Classe: ???</p>
+                        <p id="race">Race: ???</p>
+                        <p id="level">Niveau: ???</p>
+                        <div class="divider"></div>
+                        <p class="title">Statistiques</p>
+                        <div class="stats">
+                            <p id="strength">💪 Force: ???</p>
+                            <p id="dexterity">🤸‍♂️ Dextérité: ???</p>
+                            <p id="constitution">🏋️‍♂️ Constitution: ???</p>
+                            <p id="intelligence">🧠 Intelligence: ???</p>
+                            <p id="wisdom">🦉 Sagesse: ???</p>
+                            <p id="charisma">💃 Charisme: ???</p>
+                            <p id="luck">🍀 Chance: ???</p>
+                            <p id="speed">⚡ Vitesse: ???</p>
+                        </div>
+                        <div class="divider"></div>
+                        <p class="title">Compétences</p>
+                        <p id="abilities">Compétences: ???</p>
+                        <p id="weapon">Arme: ???</p>
+                        <p id="armor">Armure: ???</p>
+                        <p id="background">Origine: ???</p>
+                        <p id="description">Description: ???</p>
+                        <p id="customRankMention" class="mention"></p>
+                    </div>
+                </div>
+                <button id="download">💾 Télécharger la Carte</button>
+                <button id="export">Exporter la carte</button>
+            </div>
+            <div class="right-column">
+                <div class="stats-overview">
+                    <div class="stats-item"><p id="nameCount">🔤 Noms: ???</p></div>
+                    <div class="stats-item"><p id="classCount">🛡️ Classes: ???</p></div>
+                    <div class="stats-item"><p id="raceCount">🌍 Races: ???</p></div>
+                    <div class="stats-item"><p id="abilityCount">✨ Compétences: ???</p></div>
+                    <div class="stats-item"><p id="weaponCount">⚔️ Armes: ???</p></div>
+                    <div class="stats-item"><p id="armorCount">🛡️ Armures: ???</p></div>
+                    <div class="stats-item"><p id="backgroundCount">📜 Origines: ???</p></div>
+                    <div class="stats-item"><p id="descriptionCount">📝 Descriptions: ???</p></div>
+                    <div class="stats-item"><p id="totalPossibilitiesRandom">🔄 Total de possibilités avec nom aléatoire: ???</p></div>
+                    <div class="stats-item"><p id="totalPossibilitiesCustom">✍️ Total de possibilités avec nom personnalisé: ???</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

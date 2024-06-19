@@ -1,0 +1,389 @@
+body {
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(135deg, #2e1a47 40%, #1b0d32 100%);
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    background: #3b2245;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    border: 2px solid #ffcc00;
+    transform: translateZ(0); /* Create a new stacking context */
+}
+
+.navigation {
+    margin-bottom: 20px;
+}
+
+.navigation button {
+    margin: 5px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.navigation button:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #ffcc00;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    margin: 10px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.input-group input {
+    padding: 10px;
+    width: 60%;
+    border: 2px solid #ffcc00;
+    border-radius: 5px 0 0 5px;
+    background: #1e0d28;
+    color: #f0f0f0;
+    font-size: 1em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.input-group button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.1em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.input-group button:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+}
+
+.stats-overview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    background: #2a1b36;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.stats-item {
+    flex: 1 1 45%;
+    margin: 10px;
+    background: #4b2b56;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    transition: background-color 0.3s;
+    border: 1px solid #ffcc00;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.stats-item:hover {
+    background-color: #593a69;
+}
+
+.stats-item p {
+    margin: 5px 0;
+    font-size: 1.2em;
+    color: #ffcc00;
+    display: flex;
+    align-items: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.card {
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    position: relative;
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease-out;
+    max-width: 600px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    background-size: cover;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.name-container, .rank-container {
+    text-align: left;
+}
+
+.name-container .label, .rank-container .label {
+    display: block;
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.name-container h2, .rank-container p {
+    margin: 0;
+    font-size: 2.5em;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card-body {
+    padding-top: 10px;
+    transform: translateZ(20px);
+}
+
+.card-body p {
+    margin: 5px 0;
+    font-size: 1.3em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.card .stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.card .stats p {
+    flex: 1 1 45%;
+    margin: 5px 0;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.card .rank {
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 25px;
+    pointer-events: none;
+    transition: box-shadow 0.3s ease-out;
+}
+
+.card:hover::before {
+    box-shadow: 0 0 40px rgba(255, 204, 0, 0.9);
+}
+
+.card .divider {
+    border-bottom: 2px solid;
+    margin: 10px 0;
+}
+
+.card p.title {
+    font-weight: bold;
+    font-size: 1.4em;
+    text-align: center;
+    margin-bottom: 5px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+#download {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.2em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+#download:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+}
+
+/* Styles spécifiques pour chaque rang */
+.card.rank-D {
+    border: 2px solid #8b4513; /* Bronze */
+    background: linear-gradient(135deg, #d2b48c, #8b4513); /* Dégradé pour le bronze */
+    color: #5c4033; /* Couleur du texte foncée */
+}
+
+.card.rank-D .card-header, .card.rank-D .card-body, .card.rank-D .name-container h2, .card.rank-D .rank-container p {
+    color: #5c4033; /* Couleur du texte foncée */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card.rank-D .divider {
+    border-color: #5c4033; /* Bronze foncé */
+}
+
+.card.rank-D::before {
+    box-shadow: 0 0 20px rgba(139, 69, 19, 0.6); /* Bronze */
+}
+
+.card.rank-C {
+    border: 2px solid #b87333; /* Cuivre */
+    background: linear-gradient(135deg, #cd7f32, #b87333); /* Dégradé pour le cuivre */
+    color: #8a5a44; /* Couleur du texte foncée */
+}
+
+.card.rank-C .card-header, .card.rank-C .card-body, .card.rank-C .name-container h2, .card.rank-C .rank-container p {
+    color: #8a5a44; /* Couleur du texte foncée */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card.rank-C .divider {
+    border-color: #8a5a44; /* Cuivre foncé */
+}
+
+.card.rank-C::before {
+    box-shadow: 0 0 20px rgba(184, 115, 51, 0.6); /* Cuivre */
+}
+
+.card.rank-B {
+    border: 2px solid #c0c0c0; /* Argent */
+    background: linear-gradient(135deg, #d3d3d3, #c0c0c0); /* Dégradé pour l'argent */
+    color: #808080; /* Couleur du texte foncée */
+}
+
+.card.rank-B .card-header, .card.rank-B .card-body, .card.rank-B .name-container h2, .card.rank-B .rank-container p {
+    color: #808080; /* Couleur du texte foncée */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card.rank-B .divider {
+    border-color: #808080; /* Argent foncé */
+}
+
+.card.rank-B::before {
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.6); /* Argent */
+}
+
+.card.rank-A {
+    border: 2px solid #ffd700; /* Or */
+    background: linear-gradient(135deg, #ffec8b, #ffd700); /* Dégradé pour l'or */
+    color: #b8860b; /* Couleur du texte foncée */
+}
+
+.card.rank-A .card-header, .card.rank-A .card-body, .card.rank-A .name-container h2, .card.rank-A .rank-container p {
+    color: #b8860b; /* Couleur du texte foncée */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card.rank-A .divider {
+    border-color: #b8860b; /* Or foncé */
+}
+
+.card.rank-A::before {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); /* Or */
+}
+
+.card.rank-S {
+    border: 2px solid #4682b4; /* Acier */
+    background: linear-gradient(135deg, #87cefa, #4682b4); /* Dégradé pour l'acier */
+    color: #2c3e50; /* Couleur du texte foncée */
+}
+
+.card.rank-S .card-header, .card.rank-S .card-body, .card.rank-S .name-container h2, .card.rank-S .rank-container p {
+    color: #2c3e50; /* Couleur du texte foncée */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card.rank-S .divider {
+    border-color: #2c3e50; /* Acier foncé */
+}
+
+.card.rank-S::before {
+    box-shadow: 0 0 20px rgba(70, 130, 180, 0.6); /* Acier */
+}
+
+.card.rank-Ultimate {
+    border: 2px solid #b9f2ff; /* Diamant */
+    background: linear-gradient(135deg, #e0ffff, #b9f2ff); /* Dégradé pour le diamant */
+    color: #0b3d91; /* Couleur du texte foncée */
+}
+
+.card.rank-Ultimate .card-header, .card.rank-Ultimate .card-body, .card.rank-Ultimate .name-container h2, .card.rank-Ultimate .rank-container p {
+    color: #0b3d91; /* Couleur du texte foncée */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card.rank-Ultimate .divider {
+    border-color: #0b3d91; /* Diamant foncé */
+}
+
+.card.rank-Ultimate::before {
+    box-shadow: 0 0 20px rgba(185, 242, 255, 0.6); /* Diamant */
+}
