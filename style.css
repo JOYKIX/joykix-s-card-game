@@ -12,6 +12,7 @@ body {
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .container {
@@ -19,26 +20,70 @@ body {
     width: 100%;
     max-width: 1200px;
     background: rgba(59, 34, 69, 0.9);
-    padding: 30px;
+    padding: 20px;
     border-radius: 25px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
     border: 2px solid #ffcc00;
     transform: translateZ(0);
 }
 
-h1 {
-    margin-bottom: 20px;
+.header h1 {
+    margin-bottom: 10px;
     color: #ffcc00;
-    font-size: 3em;
+    font-size: 2.5em;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-family: 'Uncial Antiqua', cursive;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
+.header h2 {
+    margin-bottom: 20px;
+    color: #ffcc00;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.navigation-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffdd44 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.1em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.navigation-buttons button:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #ffcc00 100%);
+    transform: scale(1.05);
+}
+
 .content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 .left-column, .right-column {
@@ -50,13 +95,15 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .right-column {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 20px;
+    width: 100%;
+    margin-left: 0;
 }
 
 .input-group {
@@ -69,7 +116,8 @@ h1 {
 
 .input-group input {
     padding: 10px;
-    width: 60%;
+    width: 100%;
+    max-width: 300px;
     border: 2px solid #ffcc00;
     border-radius: 5px 0 0 5px;
     background: #1e0d28;
@@ -82,6 +130,7 @@ h1 {
 /* Styles pour le menu déroulant des rangs */
 #rankSelect {
     width: 100%;
+    max-width: 300px;
     padding: 10px;
     font-size: 1.1em;
     font-family: 'Cinzel', serif;
@@ -174,7 +223,7 @@ h1 {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
     position: relative;
     transition: transform 0.1s ease-out, box-shadow 0.3s ease-out;
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
     transform-style: preserve-3d;
     perspective: 1000px;
