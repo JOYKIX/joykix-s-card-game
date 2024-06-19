@@ -107,6 +107,33 @@ h2 {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+.version {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.patch-notes {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.patch-notes h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #ffcc00;
+}
+
+.patch-notes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.patch-notes li {
+    margin-bottom: 5px;
+    font-size: 1em;
+    color: #f0f0f0;
+}
+
 .background-animation {
     position: absolute;
     top: 0;

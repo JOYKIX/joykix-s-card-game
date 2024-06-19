@@ -31,7 +31,7 @@ function calculateTotalPossibilities(numNames) {
     const numStats = 100;
     const numStatsTotal = Math.pow(numStats, 8); // Chaque statistique a une plage de 1 à 100, et il y a 8 statistiques
 
-    return numNames * numClasses * numRaces * numAbilities * numWeapons * numArmors * numBackgrounds * numDescriptions * numLevels * numStatsTotal;
+    return numNames * numClasses * numRaces * numAbilities * numWeapons * numArmors * numBackgrounds * numDescriptions;
 }
 
 function generateCard() {
