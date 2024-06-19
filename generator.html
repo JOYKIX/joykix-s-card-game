@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Générateur de Carte RPG</title>
+    <title>Joykix's Card Game - Générateur de Carte RPG</title>
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="noms.js"></script>
@@ -19,12 +19,15 @@
 </head>
 <body>
     <div class="container">
-        <div class="navigation">
-            <button onclick="window.location.href='index.html'">🏠 Menu</button>
-            <button onclick="window.location.href='gallery.html'">🖼️ Galerie</button>
-            <button onclick="window.location.href='battle.html'">⚔️ Combat</button>
+        <div class="header">
+            <h1>Joykix's Card Game</h1>
+            <h2>Générateur de Carte RPG</h2>
         </div>
-        <h1>🃏 Générateur de Carte RPG 🃏</h1>
+        <div class="navigation-buttons">
+            <button onclick="navigateTo('index.html')">🏠 Menu</button>
+            <button onclick="navigateTo('gallery.html')">🖼️ Galerie</button>
+            <button onclick="navigateTo('battle.html')">⚔️ Combat</button>
+        </div>
         <div class="content">
             <div class="left-column">
                 <div class="input-group">
@@ -102,5 +105,6 @@
             </div>
         </div>
     </div>
+    <script src="generator.js"></script>
 </body>
 </html>

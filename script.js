@@ -31,7 +31,7 @@ function calculateTotalPossibilities(numNames) {
     const numStats = 100;
     const numStatsTotal = Math.pow(numStats, 8); // Chaque statistique a une plage de 1 à 100, et il y a 8 statistiques
 
-    return numNames * numClasses * numRaces * numAbilities * numWeapons * numArmors * numBackgrounds * numDescriptions * numStatsTotal;
+    return numNames * numClasses * numRaces * numAbilities * numWeapons * numArmors * numBackgrounds * numDescriptions * numLevels * numStatsTotal;
 }
 
 function generateCard() {
@@ -182,4 +182,29 @@ function exportCard() {
     link.click();
 }
 
+// Animation de la carte
+const card = document.getElementById('card');
+card.addEventListener('mousemove', handleMouseMove);
+card.addEventListener('mouseleave', handleMouseLeave);
+
+function handleMouseMove(event) {
+    const cardRect = card.getBoundingClientRect();
+    const cardWidth = cardRect.width;
+    const cardHeight = cardRect.height;
+    const centerX = cardRect.left + cardWidth / 2;
+    const centerY = cardRect.top + cardHeight / 2;
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    const rotateX = (centerY - mouseY) / cardHeight * 30; // Plus prononcé
+    const rotateY = (mouseX - centerX) / cardWidth * 30; // Plus prononcé et inversé
+
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+
+function handleMouseLeave() {
+    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+}
+
 updateCounts();
+
+
