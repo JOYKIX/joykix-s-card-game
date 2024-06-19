@@ -25,6 +25,7 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
     border: 2px solid #ffcc00;
     position: relative;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 h1 {
@@ -133,5 +134,14 @@ h2 {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
